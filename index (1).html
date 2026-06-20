@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Таймер</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍅 Pomodoro Таймер</h1>
+            <p class="subtitle">Эффективное управление временем</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Canvas для визуализации -->
+            <div class="canvas-container">
+                <canvas id="timerCanvas" width="300" height="300"></canvas>
+                <div class="timer-display">
+                    <span class="time-value" id="timeDisplay">25:00</span>
+                    <span class="session-label" id="sessionLabel">Работа</span>
+                </div>
+            </div>
+
+            <!-- Управление таймером -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">Старт</button>
+                <button id="pauseBtn" class="btn btn-secondary" disabled>Пауза</button>
+                <button id="resetBtn" class="btn btn-danger">Сброс</button>
+            </div>
+
+            <!-- Статистика и сессии -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3>Текущая сессия</h3>
+                    <p id="currentSession">Работа</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Завершено сессий</h3>
+                    <p id="completedSessions">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Общее время</h3>
+                    <p id="totalTime">0 ч</p>
+                </div>
+            </div>
+
+            <!-- История сессий -->
+            <div class="history-section">
+                <h3>История сессий</h3>
+                <div id="historyList" class="history-list">
+                    <p class="empty-message">История пуста</p>
+                </div>
+            </div>
+
+            <!-- Настройки -->
+            <div class="settings-section">
+                <h3>⚙️ Настройки</h3>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label for="workDuration">Время работы (мин)</label>
+                        <div class="input-group">
+                            <button id="decreaseWork" class="btn-small">−</button>
+                            <input type="number" id="workDuration" min="1" max="60" value="25">
+                            <button id="increaseWork" class="btn-small">+</button>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="breakDuration">Время перерыва (мин)</label>
+                        <div class="input-group">
+                            <button id="decreaseBreak" class="btn-small">−</button>
+                            <input type="number" id="breakDuration" min="1" max="30" value="5">
+                            <button id="increaseBreak" class="btn-small">+</button>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="longBreakDuration">Длительный перерыв (мин)</label>
+                        <div class="input-group">
+                            <button id="decreaseLongBreak" class="btn-small">−</button>
+                            <input type="number" id="longBreakDuration" min="1" max="60" value="15">
+                            <button id="increaseLongBreak" class="btn-small">+</button>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="sessionsUntilLongBreak">Сессий до длительного перерыва</label>
+                        <div class="input-group">
+                            <button id="decreaseSessions" class="btn-small">−</button>
+                            <input type="number" id="sessionsUntilLongBreak" min="1" max="10" value="4">
+                            <button id="increaseSessions" class="btn-small">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-controls">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="soundToggle" checked>
+                        Включить звук
+                    </label>
+                    <button id="clearHistory" class="btn btn-warning">Очистить историю</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
